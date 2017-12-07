@@ -70,7 +70,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | The $query_builder variables lets you determine whether or not to load
 | the query builder class.
 */
-$active_group = 'dev';
+$active_group = 'prod';
 $query_builder = TRUE;
 
 $db['prod'] = array(
@@ -78,7 +78,7 @@ $db['prod'] = array(
 	'hostname' => 'localhost',
 	'username' => 'sak1oeqg_migatsu',
 	'password' => 'migatsuDB',
-	'database' => 'sak1oeqg_migatsu_inventory_system',
+	'database' => 'sak1oeqg_aim_inventory_system',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
@@ -99,7 +99,7 @@ $db['dev'] = array(
 	'hostname' => 'localhost',
 	'username' => 'root',
 	'password' => 'password',
-	'database' => 'migatsu_inventory_system',
+	'database' => 'aim_inventory_system',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
