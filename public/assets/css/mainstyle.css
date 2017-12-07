@@ -648,7 +648,7 @@ body{
 .table{
     color: rgba(255, 255, 255, 1);
     letter-spacing: 1px;
-    background: rgba(42,63,84,1);
+    background: rgba(24,60,44,0.9);
     border: 1px solid;
     border-color: rgba(33, 33, 33, .5) transparent rgba(56, 56, 56, 1) transparent;
     transition: .3s;
@@ -658,12 +658,12 @@ body{
 }
 
 .table .list .item{
-    background: rgba(42,63,84, .9);
+    /* background: rgba(24,60,44,0.9); */
     transition: .3s;
-    border-bottom:1px solid rgba(42,63,84, 0.8);
+    /* border-bottom:1px solid rgba(42,63,84, 0.8); */
 }
 .table .list .item:hover{
-    background-color: rgba(90, 115, 142, 1);
+    background-color: rgba(255,255,255, 0.1);
     color: rgba(255, 255, 255, 1);
     cursor: pointer;
     transition: 0.5s;
