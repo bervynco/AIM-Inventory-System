@@ -698,7 +698,7 @@ md-dialog > md-dialog-actions > .md-primary {
     color: black !important;
 }
  .dialog-header{
-    background-color: rgba(42,63,84,1);
+    background-color: rgba(24,60,44,0.9);
     color: whitesmoke;
     font-size:1.5em;
 }
@@ -799,7 +799,7 @@ select {
     transform: scale(1.5);
 }
 .add-button:hover{
-    background-color: rgba(42,63,84,1);
+    background-color: rgba(24,60,44,0.9);
     color: whitesmoke;
     transition: all 0.5s;
 }
