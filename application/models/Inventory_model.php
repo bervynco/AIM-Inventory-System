@@ -1,13 +1,16 @@
 <?php
 class inventory_model extends CI_Model {
     function selectAllInventory(){
-
         $query = $this->db->select(array('inventory.*', 'suppliers.name'))->from('inventory')->join('suppliers','suppliers.id = inventory.supplier_id')->order_by('product_id', 'asc')->get();
         return($query->num_rows() > 0) ? $query->result_array(): array();
     }
 
-    function insertInventory($arrCustomerDetail){
-        $query = $this->db->insert('inventory', $arrCustomerDetail);
+    function selectInventoryItem($id){
+        $query = $this->db->select(array('inventory.*', 'suppliers.name'))->from('inventory')->join('suppliers','suppliers.id = inventory.supplier_id')->where('inventory.id', $id)->get();
+        return($query->num_rows() > 0) ? $query->first_row(): null;
+    }
+    function insertInventory($arrInventoryDetail){
+        $query = $this->db->insert('inventory', $arrInventoryDetail);
 
         return $this->db->insert_id();
     }
@@ -22,7 +25,9 @@ class inventory_model extends CI_Model {
                                     'purchase_price' => $arrInventoryDetail['purchase_price'],
                                     'location' => $arrInventoryDetail['location'],
                                     'remarks' => $arrInventoryDetail['remarks'],
-                                    'supplier_id' => $arrInventoryDetail['supplier_id']
+                                    'supplier_id' => $arrInventoryDetail['supplier_id'],
+                                    'balance'=> $arrInventoryDetail['balance'],
+                                    'threshold'=> $arrInventoryDetail['threshold']
                                 )
                             );
         return $this->db->affected_rows();

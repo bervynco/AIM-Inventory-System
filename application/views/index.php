@@ -98,74 +98,65 @@
                     <span flex="none" my-setter width-in-percent="5"></span>
                     <div flex layout layout-align="start center"> Menu</div>
                 </div>
-                 <div class="item" my-setter height-in-percent="7" layout layout-align="start stretch" ng-click="ChangeState('home')">
-                    <span flex="none" my-setter width-in-percent="15" layout layout-align="center stretch">
-                        <md-icon md-svg-src="{{SVG.note}}" layout layout-align="center center"></md-icon>
-                    </span>
+                <div class="item" my-setter height-in-percent="7" layout layout-align="start stretch" 
+                 ng-class="{'state-active': MainState == 'home'}" ng-click="ChangeState('home')" ng-if="userDetails.role ==='Administrator'">
+                    <span flex="none" my-setter width-in-percent="3" ng-class="{'state-active-bar': MainState == 'home'}"></span>
                     <md-tooltip md-direction="right">This is your today's transactions</md-tooltip>
                     <span flex="none" my-setter width-in-percent="5"></span>
                     <div flex layout layout-align="start center">Transactions</div>
                 </div> 
-                <div class="item" flex="none" my-setter height-in-percent="7" layout layout-align="start stretch" ng-click="ChangeState('customer')">
-                    <span flex="none" my-setter width-in-percent="15" layout layout-align="center stretch">
-                        <md-icon md-svg-src="{{SVG.info}}" layout layout-align="center center"></md-icon>
-                    </span>
+                <div class="item" flex="none" my-setter height-in-percent="7" layout layout-align="start stretch" ng-click="ChangeState('customer')" 
+                    ng-class="{'state-active': MainState == 'customer'}">
+                    <span flex="none" my-setter width-in-percent="3" ng-class="{'state-active-bar': MainState == 'customer'}"></span>
                     <span flex="none" my-setter width-in-percent="5"></span>
                     <md-tooltip md-direction="right">View your clients here.</md-tooltip>
                     <div flex layout layout-align="start center">Customers</div>
                 </div>
-                <div class="item" flex="none" my-setter height-in-percent="7" layout layout-align="start stretch" ng-click="ChangeState('supplier')">
-                    <span flex="none" my-setter width-in-percent="15" layout layout-align="center stretch">
-                        <md-icon md-svg-src="{{SVG.info}}" layout layout-align="center center"></md-icon>
-                    </span>
+                <div class="item" flex="none" my-setter height-in-percent="7" layout layout-align="start stretch" ng-click="ChangeState('supplier')"
+                    ng-class="{'state-active': MainState == 'supplier'}">
+                    <span flex="none" my-setter width-in-percent="3" ng-class="{'state-active-bar': MainState == 'supplier'}"></span>
                     <span flex="none" my-setter width-in-percent="5"></span>
                     <md-tooltip md-direction="right">View your suppliers here.</md-tooltip>
                     <div flex layout layout-align="start center">Suppliers</div>
                 </div>
-                <div class="item" flex="none" my-setter height-in-percent="7" layout layout-align="start stretch" ng-click="ChangeState('inventory')">
-                    <span flex="none" my-setter width-in-percent="15" layout layout-align="center stretch">
-                        <md-icon md-svg-src="{{SVG.info}}" layout layout-align="center center"></md-icon>
-                    </span>
+                <div class="item" flex="none" my-setter height-in-percent="7" layout layout-align="start stretch" ng-click="ChangeState('inventory')"
+                    ng-class="{'state-active': MainState == 'inventory'}">
+                    <span flex="none" my-setter width-in-percent="3" ng-class="{'state-active-bar': MainState == 'inventory'}"></span>
                     <span flex="none" my-setter width-in-percent="5"></span>
-                    <md-tooltip md-direction="right">View your inventory here</md-tooltip>
+                    <md-tooltip md-direction="right">View inventory details</md-tooltip>
                     <div flex layout layout-align="start center">Inventory</div>
                 </div>
-                <div class="item" flex="none" my-setter height-in-percent="7" layout layout-align="start stretch" ng-click="ChangeState('receivables')">
-                    <span flex="none" my-setter width-in-percent="15" layout layout-align="center stretch">
-                        <md-icon md-svg-src="{{SVG.info}}" layout layout-align="center center"></md-icon>
-                    </span>
+                <div class="item" flex="none" my-setter height-in-percent="7" layout layout-align="start stretch" ng-click="ChangeState('receivables')"
+                    ng-class="{'state-active': MainState == 'receivables'}" ng-if="userDetails.role ==='Administrator'">
+                    <span flex="none" my-setter width-in-percent="3" ng-class="{'state-active-bar': MainState == 'receivables'}"></span>
                     <span flex="none" my-setter width-in-percent="5"></span>
-                    <md-tooltip md-direction="right">View your recievables here</md-tooltip>
+                    <md-tooltip md-direction="right">View receivables details</md-tooltip>
                     <div flex layout layout-align="start center">Receivables</div>
                 </div>
-                <div class="item" flex="none" my-setter height-in-percent="7" layout layout-align="start stretch" ng-click="ChangeState('payables')">
-                    <span flex="none" my-setter width-in-percent="15" layout layout-align="center stretch">
-                        <md-icon md-svg-src="{{SVG.info}}" layout layout-align="center center"></md-icon>
-                    </span>
+                <div class="item" flex="none" my-setter height-in-percent="7" layout layout-align="start stretch" ng-click="ChangeState('payables')"
+                    ng-class="{'state-active': MainState == 'payables'}" ng-if="userDetails.role ==='Administrator'">
+                    <span flex="none" my-setter width-in-percent="3" ng-class="{'state-active-bar': MainState == 'payables'}"></span>
                     <span flex="none" my-setter width-in-percent="5"></span>
-                    <md-tooltip md-direction="right">View your payables here</md-tooltip>
+                    <md-tooltip md-direction="right">View payable details</md-tooltip>
                     <div flex layout layout-align="start center">Payables</div>
                 </div>
-                <div class="item" flex="none" my-setter height-in-percent="7" layout layout-align="start stretch" ng-click="ChangeState('purchase-order')">
-                    <span flex="none" my-setter width-in-percent="15" layout layout-align="center stretch">
-                        <md-icon md-svg-src="{{SVG.info}}" layout layout-align="center center"></md-icon>
-                    </span>
+                <div class="item" flex="none" my-setter height-in-percent="7" layout layout-align="start stretch" ng-click="ChangeState('purchase-order')"
+                    ng-class="{'state-active': MainState == 'purchase-order'}" ng-if="userDetails.role ==='Administrator'">
+                    <span flex="none" my-setter width-in-percent="3" ng-class="{'state-active-bar': MainState == 'purchase-order'}"></span>
                     <span flex="none" my-setter width-in-percent="5"></span>
-                    <md-tooltip md-direction="right">View your purchase order here</md-tooltip>
+                    <md-tooltip md-direction="right">View purchase order details</md-tooltip>
                     <div flex layout layout-align="start center">Purchase Order</div>
                 </div>
-                <div class="item" flex="none" my-setter height-in-percent="7" layout layout-align="start stretch" ng-click="ChangeState('outbound-delivery')">
-                    <span flex="none" my-setter width-in-percent="15" layout layout-align="center stretch">
-                        <md-icon md-svg-src="{{SVG.info}}" layout layout-align="center center"></md-icon>
-                    </span>
+                <div class="item" flex="none" my-setter height-in-percent="7" layout layout-align="start stretch" ng-click="ChangeState('outbound-delivery')"
+                    ng-class="{'state-active': MainState == 'outbound-delivery '}" ng-if="userDetails.role ==='Administrator'">
+                    <span flex="none" my-setter width-in-percent="3" ng-class="{'state-active-bar': MainState == 'outbound-delivery'}"></span>
                     <span flex="none" my-setter width-in-percent="5"></span>
-                    <md-tooltip md-direction="right">View your delivery page here</md-tooltip>
+                    <md-tooltip md-direction="right">Scheduled Delivery for today</md-tooltip>
                     <div flex layout layout-align="start center">Outbound Delivery Page</div>
                 </div>
-                <div class="item" flex="none" my-setter height-in-percent="7" layout layout-align="start stretch" ng-click="ChangeState('user-management')">
-                    <span flex="none" my-setter width-in-percent="15" layout layout-align="center stretch">
-                        <md-icon md-svg-src="{{SVG.info}}" layout layout-align="center center"></md-icon>
-                    </span>
+                <div class="item" flex="none" my-setter height-in-percent="7" layout layout-align="start stretch" ng-click="ChangeState('user-management')"
+                    ng-class="{'state-active': MainState == 'user-management'}" ng-if="userDetails.role ==='Administrator'">
+                    <span flex="none" my-setter width-in-percent="3" ng-class="{'state-active-bar': MainState == 'user-management'}"></span>
                     <span flex="none" my-setter width-in-percent="5"></span>
                     <md-tooltip md-direction="right">Add and modify user access.</md-tooltip>
                     <div flex layout layout-align="start center">User Management</div>
@@ -178,30 +169,27 @@
                     <md-tooltip md-direction="right">More details regarding AMAT</md-tooltip>
                     <div flex layout layout-align="start center">Reports</div>
                 </div> -->
-                <div class="item" flex="none" my-setter height-in-percent="7" layout layout-align="start stretch" ng-click="ChangeState('logs')">
-                    <span flex="none" my-setter width-in-percent="15" layout layout-align="center stretch">
-                        <md-icon md-svg-src="{{SVG.info}}" layout layout-align="center center"></md-icon>
-                    </span>
+                <div class="item" flex="none" my-setter height-in-percent="7" layout layout-align="start stretch" ng-click="ChangeState('logs')"
+                    ng-class="{'state-active': MainState == 'logs'}" ng-if="userDetails.role ==='Administrator'">
+                    <span flex="none" my-setter width-in-percent="3" ng-class="{'state-active-bar': MainState == 'logs'}"></span>
                     <span flex="none" my-setter width-in-percent="5"></span>
                     <md-tooltip md-direction="right">View Inventory System's activities</md-tooltip>
                     <div flex layout layout-align="start center">System Logs</div>
                 </div>
-                <div class="item" flex="none" my-setter height-in-percent="7" layout layout-align="start stretch" ng-click="ChangeState('reports')">
-                    <span flex="none" my-setter width-in-percent="15" layout layout-align="center stretch">
-                        <md-icon md-svg-src="{{SVG.info}}" layout layout-align="center center"></md-icon>
-                    </span>
+                <div class="item" flex="none" my-setter height-in-percent="7" layout layout-align="start stretch" ng-click="ChangeState('reports')"
+                    ng-class="{'state-active': MainState == 'reports'}" ng-if="userDetails.role ==='Administrator'">
+                    <span flex="none" my-setter width-in-percent="3" ng-class="{'state-active-bar': MainState == 'reports'}"></span>
                     <span flex="none" my-setter width-in-percent="5"></span>
                     <md-tooltip md-direction="right">Generate various reports</md-tooltip>
                     <div flex layout layout-align="start center">Reports</div>
                 </div>
-                <div class="item" flex="none" my-setter height-in-percent="7" layout layout-align="start stretch" ng-click="ChangeState('help')">
-                    <span flex="none" my-setter width-in-percent="15" layout layout-align="center stretch">
-                        <md-icon md-svg-src="{{SVG.info}}" layout layout-align="center center"></md-icon>
-                    </span>
+                <!-- <div class="item" flex="none" my-setter height-in-percent="7" layout layout-align="start stretch" ng-click="ChangeState('help')"
+                    ng-class="{'state-active': MainState == 'help'}">
+                    <span flex="none" my-setter width-in-percent="3" ng-class="{'state-active-bar': MainState == 'help'}"></span>
                     <span flex="none" my-setter width-in-percent="5"></span>
-                    <md-tooltip md-direction="right">View help here</md-tooltip>
+                    <md-tooltip md-direction="right">More details regarding the system</md-tooltip>
                     <div flex layout layout-align="start center">Help</div>
-                </div>
+                </div> -->
             </div>
         </div>
         <div flex layout="column" layout-align="start stretch">
@@ -212,7 +200,7 @@
                 <div my-setter width-in-percent="1"></div>
                 <div flex="none" my-setter width-in-percent="40" class="company-text" layout layout-align="start center">
                     <!-- <img src="public/assets/images/logo/amat-logo.jpg" /> -->
-                    <span> Migatsu Inventory System </span>
+                    <span> Audric Industrial Merchandise Inventory System </span>
                 </div>
                 <div flex></div>
                 <div flex="25" layout="row" layout-align="center stretch" class="info-tab">

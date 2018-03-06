@@ -2,12 +2,12 @@
     <div flex></div>
     <div flex="30" layout="column" layout-align="center stretch">
         <form flex="40" layout="column" layout-align="start stretch" class="login-form" layout-padding ng-submit="Login()">
-            <div flex="35" layout layout-align="center stretch" class="header">
-                <img src="public/assets/images/logo/company-logo.png">
+            <div flex="20" layout layout-align="center stretch" class="header">
+                Migatsu Inventory System
             </div>
-            <!-- <div flex="10" layout layout-align="center stretch" class="warning-message" ng-if="loggedInUser.length == 0"> 
+            <div flex="10" layout layout-align="center stretch" class="warning-message" ng-if="loggedInUser.length == 0"> 
                 {{errorMessage}}
-            </div> -->
+            </div>
             <div flex layout="column" layout-align="center stretch">
                 <div flex="30" layout layout-align="start stretch">
                     <div flex="20" layout layout-align="center stretch">
@@ -15,7 +15,7 @@
                     </div>
                     <input type="text" placeholder="Username" ng-model="user.username">
                 </div>
-                <div flex="none" my-setter height-in-percent="3"></div>
+                <div flex="5"></div>
                 <div flex="30" layout layout-align="start stretch">
                     <div flex="20" layout layout-align="center stretch">
                         <md-icon flex layout layout-align="center center" md-svg-src="{{SVG.lock}}"></md-icon>
@@ -26,6 +26,8 @@
             <div flex="20" layout layout-align="start stretch">
                 <md-button type="submit" flex class="md-raised button-submit"> Login </md-button>
             </div>
+            
+         
         </form>
     </div>
     <div flex></div>

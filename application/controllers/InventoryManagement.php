@@ -21,14 +21,10 @@ class InventoryManagement extends CI_Controller
                         $arrInventory[$index]['status'] = 'bad';
                     }
                 }
-                
             }
-            // else{
-            //     $arrInventory[$index]['status'] = 'good';
-            // }
-            $arrInventory[$index]['threshold'] = floatval($arrInventory[$index]['threshold']);
-            $arrInventory[$index]['balance'] = floatval($arrInventory[$index]['balance']);
-            
+            else {
+                $arrInventory[$index]['status'] = 'good';
+            }
         }
         echo json_encode($arrInventory);
     }
@@ -72,7 +68,8 @@ class InventoryManagement extends CI_Controller
         $arrInventoryDetail =  $this->assignDataToArray($postData, $arrColumns);
         $inventory = $this->inventory_model->insertInventory($arrInventoryDetail);
         if($inventory > 0){
-            echo "Successful";
+            echo json_encode($this->inventory_model->selectInventoryItem($inventory));
+            //echo "Successful";
         }
         else{
             echo "Error";

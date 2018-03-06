@@ -31,7 +31,7 @@
             }
             else{
                 $scope.$parent.ShowCustomToast(null, 'invalid', 'login');
-                // $scope.errorMessage = "Username and/or password invalid";
+                $scope.errorMessage = "Username and/or password invalid";
             }
             
 

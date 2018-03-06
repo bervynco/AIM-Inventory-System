@@ -259,36 +259,6 @@
 div.main-container[ui-view].ui-view-container {
     position: relative;
 }
-
-[ui-view].ng-enter, [ui-view].ng-leave {
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    /*-webkit-animation-delay: .7s;  Safari 4.0 - 8.0 
-    animation-delay: .7s;*/
-    -webkit-transition: all .8s ease-in-out;
-    -moz-transition: all .8s ease-in-out;
-    -o-transition: all .8s ease-in-out;
-    transition: all .8s ease-in-out;
-}
-
-[ui-view].ng-enter {
-    opacity: 0;
-}
-
-[ui-view].ng-enter-active {
-    opacity: 1;
-}
-
-[ui-view].ng-leave {
-    position: absolute;
-    opacity: 1;
-}
-
-[ui-view].ng-leave-active {
-    opacity: 0;
-}
 @font-face {
     font-family: 'Syncopate';
     font-style: normal;
@@ -315,9 +285,9 @@ body {
     cursor: default;
 }
 
-body *.ng-leave {
+/* body *.ng-leave {
     animation: fadeout 1s;
-}
+} */
 
 .span-height {
     height: 100%;
@@ -619,7 +589,8 @@ body{
     font-size:0.65em;
 }
 .table-values:hover{
-    background-color: rgba(180,180,180,1);
+    background-color: rgb(0,100,0);
+    /* background-color: rgba(180,180,180,1); */
     /* color: rgba(20,20,20,1);
     letter-spacing: 1px;
     background: transparent;
@@ -648,22 +619,28 @@ body{
 .table{
     color: rgba(255, 255, 255, 1);
     letter-spacing: 1px;
-    background: rgba(24,60,44,0.9);
+    
+    background-color: rgba(24,60,44,1);
+    /* background: rgba(42,63,84,1); */
     border: 1px solid;
     border-color: rgba(33, 33, 33, .5) transparent rgba(56, 56, 56, 1) transparent;
     transition: .3s;
+    width: 100%;
 }
 .table .list{
     padding:0 2px 0 3px;
 }
 
 .table .list .item{
-    /* background: rgba(24,60,44,0.9); */
+    background-color: rgba(24,60,44,0.9);
+    /* background: rgba(42,63,84, .9); */
     transition: .3s;
+    /* border-bottom: 1px solid rgba(42, 63, 84, 0.8); */
     /* border-bottom:1px solid rgba(42,63,84, 0.8); */
 }
 .table .list .item:hover{
-    background-color: rgba(255,255,255, 0.1);
+    background-color: 	rgb(97, 124, 88);
+    /* background-color: rgba(90, 115, 142, 1); */
     color: rgba(255, 255, 255, 1);
     cursor: pointer;
     transition: 0.5s;
@@ -698,7 +675,7 @@ md-dialog > md-dialog-actions > .md-primary {
     color: black !important;
 }
  .dialog-header{
-    background-color: rgba(24,60,44,0.9);
+    background-color: rgba(42,63,84,1);
     color: whitesmoke;
     font-size:1.5em;
 }
@@ -799,7 +776,7 @@ select {
     transform: scale(1.5);
 }
 .add-button:hover{
-    background-color: rgba(24,60,44,0.9);
+    background-color: rgba(42,63,84,1);
     color: whitesmoke;
     transition: all 0.5s;
 }
@@ -888,12 +865,60 @@ select {
 }
 
 .state-active {
-     background: rgba(31,47,63,1) !important;
+    background-color: rgba(97, 124, 88, 1) !important;
+     /* background: rgba(31,47,63,1) !important; */
+     /* background-color: rgba(24,60,44,0.6); */
 }
 .state-active-bar {
-    background-color: rgba(151,178,205,1) !important;
+    background-color: 	rgb(144,238,144);
+    /* background-color: rgba(24,60,44,0.3); */
+    /* background-color: rgba(151,178,205,1) !important; */
 }
 
 .no-animation{
     animation: none !important;
 }
+
+/* tables */
+.data-table {
+    letter-spacing: 1px;
+    transition: .3s;
+    width: 100%;
+    border-collapse:collapse;
+    /* border: 1px dashed black; */
+}
+.data-table, td, th {
+    border: 1px solid rgba(150,150,150,0.5);
+}
+.data-table > tbody > tr > th {
+    /* padding: 1vh;  */
+    height: 35px;
+    font-size: 0.8vw;
+    background-color: rgba(24,60,44,0.9);
+    /* background: rgba(42,63,84,1); */
+    color: rgba(255, 255, 255, 1);
+}
+.data-table > tbody > .values:hover {
+    background-color: rgba(235,235,235,1);
+    transition: 0.5s;
+}
+.data-table > tbody > tr > td {
+    padding: 0.75vh;
+    height:3vh;
+    /* height: 25px; */
+    /* padding-top: 1vh; */
+    /* padding-bottom: 1vh; */
+    font-size: 0.75vw;
+    background: transparent;
+    color: rgba(0,0,0, 1);
+    /* padding-left: 15px; */
+}
+.data-table > tbody > tr > td > div > div{
+   padding-right: 10px;
+}
+.table-buttons {
+    width:10%;
+}
+
+
+/*

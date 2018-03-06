@@ -5,7 +5,7 @@
     $scope.tableFieldNames = ['Supplier Name', 'PO ID', 'Delivery Date', 'Supplier DR ID', 'Terms', 'Due Date', 'Overdue Days', 'Remarks'];
     $scope.userDetails = JSON.parse(localStorage.getItem("user"));
     $scope.logDetails = {name: $scope.userDetails.name, page: 'Payables Page', action: 'View'};
-    $scope.currentPage = 1;
+    $scope.currentPage = 0;
 
     DataFactory.SetPageLog($scope.logDetails).success(function(response){
         console.log(response);
@@ -34,32 +34,40 @@
     $scope.ChangePage = function(i){
     }
     $scope.NextPage = function(i){
-        if(($scope.currentPage + 1 )* 10 <= $scope.filtered.length){
+        if(($scope.currentPage + 1 )* 13 <= $scope.filtered.length){
             $scope.currentPage = $scope.currentPage + 1;
             // modifyArray($scope.currentPage);
         }
         
     }
     $scope.PreviousPage = function(i){
-        if($scope.currentPage != 1){
+        if($scope.currentPage != 0){
             $scope.currentPage = $scope.currentPage - 1;
         }
     }
     
-    $scope.ToggleDone = function(list){
-        DataFactory.TogglePayableDone(list).success(function(response){
-            if(response === "Successful"){
-                $scope.logDetails = {name: $scope.userDetails.name, page: 'Payables Page', action: 'Transaction Done'};
+    $scope.ToggleDone = function(list, ev){
+        var confirm = $mdDialog.confirm()
+            .title('Would you like to toggle ' + list.name + "'s" + ' as done and archived?')
+            .textContent("This item will be archived and not deleted.")
+            .targetEvent(ev)
+            .ok('Yes')
+            .cancel('No');
+        $mdDialog.show(confirm).then(function() {
+            DataFactory.TogglePayableDone(list).success(function(response){
+                if(response === "Successful"){
+                    $scope.logDetails = {name: $scope.userDetails.name, page: 'Payables Page', action: 'Transaction Done'};
 
-                DataFactory.SetPageLog($scope.logDetails).success(function(response){
-                    console.log(response);
-                }).error(function(error){
+                    DataFactory.SetPageLog($scope.logDetails).success(function(response){
+                        console.log(response);
+                    }).error(function(error){
 
-                });
-                getData();
-            }
-        }).error(function(error){
+                    });
+                    getData();
+                }
+            }).error(function(error){
 
+            });
         });
     }
     $scope.AddNewPayable = function(ev){
@@ -73,15 +81,19 @@
             },
             controller: 'PayableDialogController'
         }).then(function(data){
-            if(data == "Successful"){
-                $scope.logDetails = {name: $scope.userDetails.name, page: 'Payables Page', action: 'Add'};
+            $scope.logDetails = {name: $scope.userDetails.name, page: 'Payables Page', action: 'Add'};
 
                 DataFactory.SetPageLog($scope.logDetails).success(function(response){
                     console.log(response);
                 }).error(function(error){
 
-                });
+            });
+            if(data == "Successful"){
                 getData();
+            }
+            else {
+                $scope.filtered.push(data);
+                $scope.currentPage = Math.floor($scope.filtered.length/14);
             }
         });
     }

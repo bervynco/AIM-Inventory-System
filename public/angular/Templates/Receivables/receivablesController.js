@@ -6,7 +6,7 @@
     $scope.userDetails = JSON.parse(localStorage.getItem("user"));
     $scope.logDetails = {name: $scope.userDetails.name, page: 'Receivables Page', action: 'View'};
     
-    $scope.currentPage = 1;
+    $scope.currentPage = 0;
     $scope.receivableList = [];
     DataFactory.SetPageLog($scope.logDetails).success(function(response){
         console.log(response);
@@ -27,14 +27,14 @@
     $scope.ChangePage = function(i){
     }
     $scope.NextPage = function(i){
-        if(($scope.currentPage + 1 )* 10 <= $scope.receivableList.length){
+        if(($scope.currentPage + 1 )* 14 <= $scope.receivableList.length){
             $scope.currentPage = $scope.currentPage + 1;
             modifyArray($scope.currentPage);
         }
         
     }
     $scope.PreviousPage = function(i){
-        if($scope.currentPage != 1){
+        if($scope.currentPage != 0){
             $scope.currentPage = $scope.currentPage - 1;
         }
     }
@@ -47,20 +47,28 @@
 
         return overdueDays;
     }
-    $scope.ToggleDone = function(list){
-        DataFactory.ToggleReceivableDone(list).success(function(response){
-            if(response === "Successful"){
-                $scope.logDetails = {name: $scope.userDetails.name, page: 'Receivables Page', action: 'Transaction Done'};
+    $scope.ToggleDone = function(list, ev){
+        var confirm = $mdDialog.confirm()
+            .title('Would you like to toggle ' + list.name + "'s" + ' as done and archived?')
+            .textContent("This item will be archived and not deleted.")
+            .targetEvent(ev)
+            .ok('Yes')
+            .cancel('No');
+        $mdDialog.show(confirm).then(function() {
+            DataFactory.ToggleReceivableDone(list).success(function(response){
+                if(response === "Successful"){
+                    $scope.logDetails = {name: $scope.userDetails.name, page: 'Receivables Page', action: 'Transaction Done'};
 
-                DataFactory.SetPageLog($scope.logDetails).success(function(response){
-                    console.log(response);
-                }).error(function(error){
+                    DataFactory.SetPageLog($scope.logDetails).success(function(response){
+                        console.log(response);
+                    }).error(function(error){
 
-                });
-                getData();
-            }
-        }).error(function(error){
+                    });
+                    getData();
+                }
+            }).error(function(error){
 
+            });
         });
     }
     $scope.AddNewReceivable = function(ev){
@@ -74,16 +82,21 @@
             },
             controller: 'ReceivableDialogController'
         }).then(function(data){
-            if(data == "Successful"){
-                $scope.logDetails = {name: $scope.userDetails.name, page: 'Receivables Page', action: 'Add'};
+            $scope.logDetails = {name: $scope.userDetails.name, page: 'Receivables Page', action: 'Add'};
 
-                DataFactory.SetPageLog($scope.logDetails).success(function(response){
-                    console.log(response);
-                }).error(function(error){
+            DataFactory.SetPageLog($scope.logDetails).success(function(response){
+                console.log(response);
+            }).error(function(error){
 
-                });
+            });
+            if(data == "Error"){
                 getData();
             }
+            else{
+                $scope.filtered.push(data);
+                $scope.currentPage = Math.floor($scope.filtered.length/14);
+            }
+
         });
     }
     $scope.EditReceivable = function(receivable, ev){

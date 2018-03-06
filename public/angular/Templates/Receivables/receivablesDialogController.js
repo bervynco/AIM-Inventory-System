@@ -48,7 +48,7 @@
     }
 
     $scope.ChangePurchaseOrder = function(id){
-        $scope.receivable_po_id = id;
+        $scope.receivable.po_id = id;
     }
     $scope.SubmitNewReceivableDetails = function(){
         if($scope.receivable.customer_id != null && $scope.receivable.delivery_date != null && $scope.receivable.due_date != null 
@@ -61,7 +61,7 @@
 
                 if($scope.action == 'Add'){
                     DataFactory.AddNewReceivable($scope.receivable).success(function(response){
-                        $mdDialog.hide("Successful");
+                        $mdDialog.hide(response);
                     }).error(function(error){
                         $mdDialog.hide("Error");
                     });
